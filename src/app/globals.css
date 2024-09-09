@@ -113,3 +113,7 @@
   color: gray !important;
   margin-bottom: 0.375rem !important;
 }
+
+.rbc-calendar {
+  height: 95% !important;
+}

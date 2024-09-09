@@ -1,7 +1,6 @@
 "use client";
 
 import Image from "next/image";
-import { title } from "process";
 import { useState } from "react";
 import Calendar from "react-calendar";
 import "react-calendar/dist/Calendar.css";
@@ -52,7 +51,7 @@ const EventCalendar = () => {
         {events.map((event) => (
           <div
             key={event.id}
-            className="p-5 rounded-md border-2 border-gray-100 border-t-4 odd:border-t-sky even:border-t-padaPurple"
+            className="p-5 rounded-lg border-2 border-gray-100 border-t-4 odd:border-t-sky even:border-t-padaPurple"
           >
             <div className="flex items-center justify-between">
               <h1 className="font-semibold text-gray-600">{event.title}</h1>
