@@ -1,3 +1,4 @@
+import FormModal from "@/components/FormModal";
 import Pagination from "@/components/Pagination";
 import Table from "@/components/Table";
 import TableSearch from "@/components/TableSearch";
@@ -79,14 +80,7 @@ const StudentListPage = () => {
             </button>
           </Link>
           {role === "admin" && (
-            <button className="w-7 h-7 flex items-center justify-center rounded-full bg-padaPurple">
-              <Image
-                src="/delete.png"
-                alt="view button"
-                height={16}
-                width={16}
-              />
-            </button>
+            <FormModal table="student" type="delete" id={item.id} />
           )}
         </div>
       </td>
@@ -117,16 +111,7 @@ const StudentListPage = () => {
                 alt="sort table button"
               />
             </button>
-            {role === "admin" && (
-              <button className="w-8 h-8 flex items-center justify-center rounded-full bg-padaYellow">
-                <Image
-                  src="/plus.png"
-                  width={14}
-                  height={14}
-                  alt="plus table button"
-                />
-              </button>
-            )}
+            {role === "admin" && <FormModal table="student" type="create" />}
           </div>
         </div>
       </div>

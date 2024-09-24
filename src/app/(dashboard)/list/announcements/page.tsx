@@ -1,3 +1,4 @@
+import FormModal from "@/components/FormModal";
 import Pagination from "@/components/Pagination";
 import Table from "@/components/Table";
 import TableSearch from "@/components/TableSearch";
@@ -43,20 +44,11 @@ const AnnouncementsListPage = () => {
       <td className="hidden sm:table-cell">{item.date}</td>
       <td>
         <div className="flex items-center gap-2">
-          <Link href={`/list/teachers/${item.id}`}>
-            <button className="w-7 h-7 flex items-center justify-center rounded-full bg-sky">
-              <Image src="/edit.png" alt="edit button" height={16} width={16} />
-            </button>
-          </Link>
           {role === "admin" && (
-            <button className="w-7 h-7 flex items-center justify-center rounded-full bg-padaPurple">
-              <Image
-                src="/delete.png"
-                alt="delete button"
-                height={16}
-                width={16}
-              />
-            </button>
+            <>
+              <FormModal table="announcement" type="update" data={item} />
+              <FormModal table="announcement" type="delete" id={item.id} />
+            </>
           )}
         </div>
       </td>
@@ -67,7 +59,9 @@ const AnnouncementsListPage = () => {
     <div className="bg-white p-4 rounded-lg flex-1 m-4 mt-0">
       {/* TOP */}
       <div className="flex justify-between items-center">
-        <h1 className="hidden md:block text-lg font-semibold">All Announcements</h1>
+        <h1 className="hidden md:block text-lg font-semibold">
+          All Announcements
+        </h1>
         <div className="flex flex-col md:flex-row items-center gap-4 w-full md:w-auto ">
           <TableSearch />
           <div className="flex items-center gap-4 self-end">
@@ -88,14 +82,7 @@ const AnnouncementsListPage = () => {
               />
             </button>
             {role === "admin" && (
-              <button className="w-8 h-8 flex items-center justify-center rounded-full bg-padaYellow">
-                <Image
-                  src="/plus.png"
-                  width={14}
-                  height={14}
-                  alt="plus table button"
-                />
-              </button>
+              <FormModal table="announcement" type="create" />
             )}
           </div>
         </div>

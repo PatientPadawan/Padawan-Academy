@@ -1,3 +1,4 @@
+import FormModal from "@/components/FormModal";
 import Pagination from "@/components/Pagination";
 import Table from "@/components/Table";
 import TableSearch from "@/components/TableSearch";
@@ -65,20 +66,11 @@ const ResultsListPage = () => {
       <td className="hidden xl:table-cell">{item.date}</td>
       <td>
         <div className="flex items-center gap-2">
-          <Link href={`/list/teachers/${item.id}`}>
-            <button className="w-7 h-7 flex items-center justify-center rounded-full bg-sky">
-              <Image src="/edit.png" alt="edit button" height={16} width={16} />
-            </button>
-          </Link>
           {role === "admin" && (
-            <button className="w-7 h-7 flex items-center justify-center rounded-full bg-padaPurple">
-              <Image
-                src="/delete.png"
-                alt="delete button"
-                height={16}
-                width={16}
-              />
-            </button>
+            <>
+              <FormModal table="result" type="update" data={item} />
+              <FormModal table="result" type="delete" id={item.id} />
+            </>
           )}
         </div>
       </td>
@@ -109,16 +101,7 @@ const ResultsListPage = () => {
                 alt="sort table button"
               />
             </button>
-            {role === "admin" && (
-              <button className="w-8 h-8 flex items-center justify-center rounded-full bg-padaYellow">
-                <Image
-                  src="/plus.png"
-                  width={14}
-                  height={14}
-                  alt="plus table button"
-                />
-              </button>
-            )}
+            {role === "admin" && <FormModal table="result" type="create" />}
           </div>
         </div>
       </div>
